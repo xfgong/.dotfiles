@@ -159,3 +159,4 @@ set tags+=/home/chris/nginx-0.7.68/tags
 set expandtab	"使用空格代替tab
 set tabstop=4 "四个空格
 set shiftwidth=4 "自动缩进的宽度
+set hls
