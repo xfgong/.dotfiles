@@ -33,6 +33,11 @@ DISABLE_AUTO_UPDATE="true"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
+unsetopt correct_all
 
 # Customize to your needs...
 export PATH=/home/chris/cloud/workspace/mcclient/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+export GOROOT=/home/chris/go
+export PATH=$PATH:$GOROOT/bin
+source ~/cloud/meituan/scripts/devstack/start_admin_client_shell
+source ~/.dotfiles/python_qa.sh
