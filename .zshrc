@@ -41,3 +41,8 @@ export GOROOT=/home/chris/go
 export PATH=$PATH:$GOROOT/bin
 source ~/cloud/meituan/scripts/devstack/start_admin_client_shell
 source ~/.dotfiles/python_qa.sh
+
+FLAKE8_COMPLEXITY=10
+FLAKE8_STRICT=0
+FLAKE8_IGNORE=W402,E501,W801,W806,W404,E125,E126,E128
+FLAKE8_LAZY=0
