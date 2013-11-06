@@ -1,3 +1,9 @@
+flake8 --version > /dev/null 2>&1
+if [ $? -ne 0 ]; then
+    echo "Warning: flake8 not install."
+    echo "         Try pip install flake8"
+fi
+
 qa () 
 {
     if [[ "$#" -lt 1 ]]; then
@@ -9,8 +15,24 @@ qa ()
     fi
 }
 
-flake8 --version > /dev/null 2>&1
-if [ $? -ne 0 ]; then
-    echo "Warning: flake8 not install."
-    echo "         Try pip install flake8"
-fi
+function hook() {
+    if [ $1 ]; then
+        basedir=$1
+    else
+        basedir=.
+    fi
+    exit=1
+    if [ -d $basedir ]; then
+        hooksdir=$basedir/.git/hooks
+        if [ -d $hooksdir ]; then
+            precommit=$hooksdir/pre-commit
+            echo "#!/bin/hash\nsource ~/.dotfiles/python_checker.sh" > $precommit
+            chmod +x $precommit
+            echo "install python check hook successful!"
+            let exit=0
+        fi
+    fi
+    if [ $exit -ne 0 ]; then
+        echo "Invalid Path"
+    fi
+}
