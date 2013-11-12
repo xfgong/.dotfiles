@@ -16,23 +16,14 @@ qa ()
 }
 
 function hook() {
-    if [ $1 ]; then
-        basedir=$1
-    else
-        basedir=.
-    fi
-    exit=1
-    if [ -d $basedir ]; then
-        hooksdir=$basedir/.git/hooks
+    root=`git rev-parse --show-toplevel`
+    if [ -d $root ]; then
+        hooksdir=$root/.git/hooks
         if [ -d $hooksdir ]; then
             precommit=$hooksdir/pre-commit
-            echo "#!/bin/hash\nsource ~/.dotfiles/python_checker.sh" > $precommit
+            echo "#!/bin/bash\nsource ~/.dotfiles/python_checker.sh" > $precommit
             chmod +x $precommit
             echo "install python check hook successful!"
-            let exit=0
         fi
-    fi
-    if [ $exit -ne 0 ]; then
-        echo "Invalid Path"
     fi
 }
