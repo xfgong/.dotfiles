@@ -40,7 +40,7 @@ export PATH=/home/chris/cloud/workspace/mcclient/bin:/usr/local/sbin:/usr/local/
 export GOROOT=/home/chris/go
 export PATH=$PATH:$GOROOT/bin
 source ~/cloud/meituan/scripts/devstack/start_admin_client_shell
-source ~/.dotfiles/python_qa.sh
+source ~/.dotfiles/python_checker.sh
 
 FLAKE8_COMPLEXITY=10
 FLAKE8_STRICT=0
