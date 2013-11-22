@@ -8,9 +8,10 @@ alias pychecker="flake8 --show-pep8 --show-source --ignore=W291,W391,W402,W404,W
 
 function check() {
     #check python code in a git repo
+    root=`git rev-parse --show-toplevel`
     exit=0
-    for file in `git diff --cached --name-only --diff-filter=ACMRTUXB HEAD|grep '\.py$'`; do
-        pychecker $file
+    for file in `git diff --name-only --diff-filter=ACMRTUXB HEAD|grep '\.py$'`; do
+        pychecker $root/$file
         if [ $? -ne 0 ]; then
             let exit=1
         fi
